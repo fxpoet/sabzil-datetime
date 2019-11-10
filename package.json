@@ -1,0 +1,25 @@
+{
+  "name": "@sabzil/datetime",
+  "version": "1.0.1",
+  "description": "Datetime utilities for Javascript ES6",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fxpoet/sabzil-datetime.git"
+  },
+  "author": {
+    "name": "Kiyoung Jung",
+    "email": "im@fxpoet.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fxpoet/sabzil-datetime/issues"
+  },
+  "homepage": "https://github.com/fxpoet/sabzil-datetime#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
