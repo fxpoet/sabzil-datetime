@@ -1,6 +1,6 @@
 {
   "name": "@sabzil/datetime",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Datetime utilities for Javascript ES6",
   "main": "index.js",
   "scripts": {
