@@ -15,6 +15,10 @@ function getLocaleStringOffset(locale) {
   let timeOffset = 0;
 
   if (locale == undefined) locale = 'utc';
+
+  if (Number.isInteger(locale))
+    timeOffset = locale;
+
   if (LOCALES[locale] != undefined)
     timeOffset = LOCALES[locale];
 
@@ -26,7 +30,7 @@ function getLocaleStringOffset(locale) {
 
 // 로케일이 적용된 타임스탬프 반환 (내부에서 사용)
 function getLocaleTime(locale, unixstamp) {
-  let timeOffset = 0;
+  let timeOffset = locale;
 
   if (!unixstamp) unixstamp = Date.now();
   if (locale == undefined) locale = 'utc';
@@ -58,19 +62,33 @@ function fromZero(locale, unixstamp) {
   return unixstamp - clockZero(locale, unixstamp);
 }
 
+function startOf(unit) {
+	// year
+	// month
+	// week
+	// day
+	// week_ko
+	// day
+	// hour
+	// minute
+	// second
+}
+
 
 // 하루를 second 만큼 라운드를 쪼갠 뒤, 해당 시간이 몇 라운드째인지 반환
 // 0 부터 시작
-function round(locale, second, unixstamp) {
-  let zero  = fromZero(locale, unixstamp);
+function round(locale, second, unixstamp, shift) {
+  if (shift == undefined) shift = 0;
+  let zero  = fromZero(locale, unixstamp - shift);
   return Math.floor(zero / (second * 1000));
 }
 
 // 다음 라운드가 시작되는 시간.
-function nextRoundTime(locale, second, unixstamp) {
-  let r = round(locale, second, unixstamp);
+function nextRoundTime(locale, second, unixstamp, shift) {
+  if (shift == undefined) shift = 0;
+  let r = round(locale, second, unixstamp, shift);
   let zero = clockZero(locale, unixstamp);
-  let next = zero + ((r+1) * (second * 1000));
+  let next = zero + ((r+1) * (second * 1000)) + shift;
   return next;
 }
 

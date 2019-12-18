@@ -50,13 +50,12 @@ test('fromZero', () => {
     expect(a).toBe( 15617578 )
 })
 
-// 제로 시간부터 지난 타임스탬프
+
 test('round', () => {
     let r = DateTime.round('ko', 2*60, 1573423918878)
     expect(r).toBe( 215 )
 })
 
-// 제로 시간부터 지난 타임스탬프
 test('nextRoundTime', () => {
     let next_r = DateTime.nextRoundTime('ko', 2*60, 1573423918878)
     let next_str = new Date(next_r).toString();
